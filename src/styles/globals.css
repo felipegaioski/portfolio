@@ -1,11 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Gayathri:wght@100;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -14,8 +13,126 @@
   }
 }
 
+:root {
+    --primary: #38b2ac;
+    --secondary: #1a202c;
+    --tertiary: #3b3b3b;
+    --background: #ffffff;
+    --foreground: #171717;
+}
+
+/* body {
+    margin: 0;
+    font-family: "Gayathri", serif;
+    background-color: #ffffff;
+    color: var(--tertiary);
+} */
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    font-family: "Staatliches", serif;
+    background-color: #ffffff;
+    color: var(--tertiary);
+}
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0rem;
+    /* background-color: #fff; */
+    background-color: transparent;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+header h1 {
+    font-weight: 700;
+    font-style: normal;
+    display: flex;
+    align-items: center;
+    font-size: 2rem;
+    padding: 0;
+}
+header nav a {
+    color: var(--tertiary);
+    text-decoration: none;
+    margin-left: 1.5rem;
+    font-size: 1.2rem;
+    transition: color 0.3s;
+}
+header nav a:hover {
+    color: var(--secondary);
+}
+
+.main-container {
+    padding-right: 5rem;
+    padding-left: 5rem;
+}
+
+.hero {
+    text-align: center;
+    padding: 8rem 1rem;
+    background-image: url('/images/IMG_5798-Pano.jpg');
+    background-size: cover;
+    background-position: center;
+}
+.hero h2 {
+    color: #fff;
+    font-size: 4rem;
+    margin-bottom: 1rem;
+}
+.hero p {
+    color: #a0aec0;
+}
+.hero button {
+    margin-top: 2rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: #38b2ac;
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+.hero button:hover {
+    background-color: #319795;
+}
+.gallery {
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    padding: 2rem;
+}
+.gallery-item {
+    background-color: #2d3748;
+    border-radius: 0.5rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+}
+.gallery-item:hover {
+    transform: scale(1.05);
+}
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+.gallery-item h3 {
+    margin: 1rem;
+    font-size: 1.25rem;
+}
+.gallery-item p {
+    margin: 0 1rem 1rem;
+    color: #a0aec0;
+}
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #2d3748;
+    color: #a0aec0;
+}
+
+.photo-meta {
+    font-family: "Alumni Sans Pinstripe", serif;
+    font-weight: 400;
+    font-style: normal;
 }
