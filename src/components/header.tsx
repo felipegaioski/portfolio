@@ -1,6 +1,6 @@
 export default function Header() {
   return (
-    <header className="main-container">
+    <header className="main-container fade-in">
         <h1>Felipe Gaioski</h1>
         <nav>
             <a href="#">Home</a>

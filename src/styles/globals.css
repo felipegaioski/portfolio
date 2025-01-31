@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Gayathri:wght@100;400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -19,6 +21,7 @@
     --tertiary: #3b3b3b;
     --background: #ffffff;
     --foreground: #171717;
+    --detail: #f3f3f3;
 }
 
 /* body {
@@ -32,6 +35,8 @@ body {
     font-family: "Staatliches", serif;
     background-color: #ffffff;
     color: var(--tertiary);
+    background-image: url('/images/clouds.png');
+    background-repeat: repeat;
 }
 header {
     display: flex;
@@ -59,6 +64,32 @@ header nav a {
 }
 header nav a:hover {
     color: var(--secondary);
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-out {
+    animation: fadeOut 0.5s ease-in-out;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }
 
 .main-container {
@@ -95,35 +126,6 @@ header nav a:hover {
 .hero button:hover {
     background-color: #319795;
 }
-.gallery {
-    display: grid;
-    gap: 1rem;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    padding: 2rem;
-}
-.gallery-item {
-    background-color: #2d3748;
-    border-radius: 0.5rem;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s;
-}
-.gallery-item:hover {
-    transform: scale(1.05);
-}
-.gallery-item img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-}
-.gallery-item h3 {
-    margin: 1rem;
-    font-size: 1.25rem;
-}
-.gallery-item p {
-    margin: 0 1rem 1rem;
-    color: #a0aec0;
-}
 footer {
     text-align: center;
     padding: 1rem;
@@ -132,7 +134,85 @@ footer {
 }
 
 .photo-meta {
-    font-family: "Alumni Sans Pinstripe", serif;
+    /* font-family: "Alumni Sans Pinstripe", serif; */
+    font-family: "Lekton", serif;
     font-weight: 400;
     font-style: normal;
+}
+
+.photo-meta-modal {
+    /* font-family: "Alumni Sans Pinstripe", serif; */
+    font-family: "Lekton", serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 1.2rem;
+}
+
+.photo-meta-background {
+    background-color: var(--detail);
+}
+
+/* Settings start */
+.justified-grid-gallery {
+    --space: 6px;
+    /* --min-height: 25rem; */
+    --last-row-background: transparent;
+}
+/* Settings end */
+
+.justified-grid-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    grid-gap: var(--space);
+    list-style: none;
+    margin: 0 !important; /* We use !important to avoid gaps in some environments. */
+    padding: 0 !important; /* We use !important to avoid gaps in some environments. */
+}
+
+.justified-grid-gallery > * {
+    flex-grow: calc(var(--width) * (100000 / var(--height)));
+    flex-basis: calc(var(--min-height) * (var(--width) / var(--height)));
+    aspect-ratio: var(--width) / var(--height);
+    position: relative;
+    overflow: hidden;
+    margin: 0 !important; /* We use !important to avoid gaps in some environments. */
+    padding: 0 !important; /* We use !important to avoid gaps in some environments. */
+}
+
+.justified-grid-gallery > * > img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.justified-grid-gallery::after {
+    content: " ";
+    flex-grow: 1000000000;
+    background: var(--last-row-background);
+}
+  
+  /* If you need something fancier, check out https://gridzy.gallery/ */
+
+.section-title {
+    font-family: "Yuji Syuku", serif;
+    font-style: normal;
+}
+
+.section-title .title-text {
+    font-size: 3rem;
+    font-weight: 600;
+    color: var(--secondary);
+    padding-bottom: 1rem;
+}
+
+.section-title .sub-text {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--secondary);
+    padding-bottom: 1rem;
+    padding-left: 4rem;
+}
+
+.cursor-pointer {
+    cursor: pointer;
 }
