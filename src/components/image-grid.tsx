@@ -3,7 +3,7 @@ import { CSSProperties } from 'react';
 import { Image } from '../types/types';
 import ImageModal from "./image-modal";
 
-export default function Gallery() {
+export default function ImageGrid() {
     const [images, setImages] = useState<Image[]>([]);
     const [error, setError] = useState<string | null>(null);
     const [visibleImages, setVisibleImages] = useState(new Set<number>()); // Track visible images
@@ -81,15 +81,15 @@ export default function Gallery() {
                             </div>
                             <div onClick={() => openModal(image)} className="cursor-pointer photo-meta absolute inset-0 bg-gradient-to-t from-black via-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
                                 <p className="text-white text-sm">
-                                    {image.camera?.name}
+                                    {image.camera?.short ?? image.camera?.name}
                                     <br />
-                                    {image.lens?.name}
+                                    {image.lens?.short ?? image.lens?.name}
                                     {image.lens?.name ? <br /> : null}
                                     {image.iso?.name ? `ISO: ${image.iso.name}` : null}
                                     {image.iso?.name ? <br /> : null}
                                     {image.aperture ? `${image.aperture}` : null}
                                     {image.aperture ? <br /> : null}
-                                    {image.shutter_speed}s
+                                    {image.shutter_speed ? `${image.shutter_speed}s` : null}
                                 </p>
                             </div>
                         </div>

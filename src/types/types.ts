@@ -14,11 +14,13 @@ export interface Image {
 export interface Camera {
     id: number;
     name: string;
+    short: string;
 }
 
 export interface Lens {
     id: number;
     name: string;
+    short: string;
 }
 
 export interface Iso {
@@ -29,4 +31,5 @@ export interface Iso {
 export interface Collection {
     id: number;
     name: string;
+    cover_image: Image;
 }

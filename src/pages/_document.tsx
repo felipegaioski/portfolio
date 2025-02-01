@@ -11,7 +11,7 @@ export default function Document() {
                 <meta property="og:image" content="/images/IMG_5798-Pano.jpg" />
                 <meta property="og:type" content="website" />
                 <meta property="og:url" content="" />
-                <link rel="icon" href="/favicon.ico" />
+                <link rel="icon" href="/taboleiro_icon.png" />
             </Head>
             <link
                 rel="stylesheet"
