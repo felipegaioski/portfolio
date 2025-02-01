@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Header() {
     return (
-        <header className="main-container fade-in">
+        <header className="main-container fade-in bg-white">
             <Link href="/">
                 <h1>Felipe Gaioski</h1>
             </Link>
