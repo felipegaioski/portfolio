@@ -1,5 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { supabase } from '../../../lib/supabase';
+import { supabase } from '../../../../lib/supabase';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     try {
@@ -12,8 +12,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             console.error('Erro ao buscar collections:', error);
             return res.status(500).json({ error: 'Erro ao buscar collections' });
         }
-
-        console.log('Dados retornados:', data);
 
         return res.status(200).json({ collections: data });
     } catch (err) {

@@ -1,4 +1,4 @@
-export interface Image {
+export interface Photo {
     id: number;
     collection: Collection;
     url: string;
@@ -9,6 +9,7 @@ export interface Image {
     shutter_speed?: string;
     width?: number;
     height?: number;
+    rating?: number;
 }
 
 export interface Camera {
@@ -31,5 +32,6 @@ export interface Iso {
 export interface Collection {
     id: number;
     name: string;
-    cover_image: Image;
+    cover_image: Photo;
+    description: string;
 }
