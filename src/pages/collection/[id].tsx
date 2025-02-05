@@ -35,7 +35,6 @@ export default function CollectionPage() {
         fetchCollection();
     }, [id]);
 
-    // if (loading) return <p>Carregando...</p>;
     if (error) return <p>{error}</p>;
 
     function Loading() {
