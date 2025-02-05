@@ -18,7 +18,9 @@ export default function Home() {
 	return (
 		<Layout>
 			<Banner />
-			<ImageGrid />
+			<div style={{ height: "100vh" }}>
+
+			</div>
 		</Layout>
 	);
 }

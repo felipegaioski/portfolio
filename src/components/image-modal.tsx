@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
-import { Image } from '../types/types';
+import { Photo } from '../types/types';
 
-type ImageModalProps = {
-    image: Image;
+type PhotoModalProps = {
+    image: Photo;
     onClose: () => void;
 };
 
 
-export default function ImageModal({ image, onClose }: ImageModalProps) {
+export default function ImageModal({ image, onClose }: PhotoModalProps) {
 
     const [isClosing, setIsClosing] = useState(false);
 
@@ -69,6 +69,9 @@ export default function ImageModal({ image, onClose }: ImageModalProps) {
                             { image.shutter_speed ? <p className="flex items-center gap-2">
                                 <span className="font-bold">Shutter Speed:</span> {image.shutter_speed}s
                             </p> : '' }
+                        </div>
+                        <div className='quality-disclaimer'>
+                            <p>* Photos not displayed in their highest quality, for better website performance.</p>
                         </div>
                     </div>
                 </div>

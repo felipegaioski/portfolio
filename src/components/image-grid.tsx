@@ -1,17 +1,21 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState} from 'react';
 import { CSSProperties } from 'react';
-import { Image } from '../types/types';
+import { Photo } from '../types/types';
+import Image from 'next/image';
 import ImageModal from "./image-modal";
 
-export default function ImageGrid() {
-    const [images, setImages] = useState<Image[]>([]);
+export default function ImageGrid({ collectionId }: { collectionId: number }) {
+    const [images, setImages] = useState<Photo[]>([]);
     const [error, setError] = useState<string | null>(null);
-    const [visibleImages, setVisibleImages] = useState(new Set<number>()); // Track visible images
+    const [selectedImage, setSelectedImage] = useState<Photo | null>(null);
+    const [visibleImages, setVisibleImages] = useState(new Set<number>());
 
     useEffect(() => {
-        fetch('/api/images')
+        if (!collectionId) return; 
+
+        fetch(`/api/images/${collectionId}`)
             .then((res) => res.json())
-            .then((data) => {
+            .then((data) => {                
                 if (data.error) {
                     setError(data.error);
                 } else {
@@ -19,7 +23,7 @@ export default function ImageGrid() {
                 }
             })
             .catch(() => setError('Erro ao carregar imagens'));
-    }, []);
+    }, [collectionId]);
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -47,23 +51,17 @@ export default function ImageGrid() {
     const size = typeof window === 'undefined' ? 0 : window.innerWidth;
     let remValue = size > 1200 ? '25rem' : size > 1024 ? '20rem' : '15rem';
 
-    const [selectedImage, setSelectedImage] = useState<Image | null>(null);
-
-    const openModal = (image: Image) => setSelectedImage(image);
+    const openModal = (image: Photo) => setSelectedImage(image);
     const closeModal = () => setSelectedImage(null);
 
     return (
-        <section className="py-6">
+        <section>
             <div className="px-2">
-                <div className="section-title main-container fade-in">
-                    <h2 className="title-text">Taboleiro</h2>
-                    <p className="sub-text">Taboleiro is a region located in the countryside of Paraná, Brazil. It is known for its calm and peaceful atmosphere, with ranches and beautiful views of nature.</p>
-                </div>
                 <div className="justified-grid-gallery">
                     {images.map((image, index) => (
                         <div
                             key={index}
-                            className="group gallery-item"
+                            className="group gallery-item relative"
                             data-index={index}
                             style={{ '--width': image.width, '--height': image.height, '--min-height': remValue } as CSSProperties}
                         >
@@ -73,8 +71,10 @@ export default function ImageGrid() {
                                 }`}
                                 onClick={() => openModal(image)}
                             >
-                                <img
+                                <Image
                                     src={image.url}
+                                    width={image.width}
+                                    height={image.height}      
                                     alt={`Gallery image ${index + 1}`}
                                     className="transition-transform duration-300 cursor-pointer object-cover"
                                 />

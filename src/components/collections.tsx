@@ -9,7 +9,7 @@ export default function Collections() {
     useEffect(() => {
         const fetchCollections = async () => {
             try {
-                const res = await fetch('/api/collections');
+                const res = await fetch('/api/collections/collections');
                 const data = await res.json();
 
                 if (data.error) {
@@ -29,7 +29,16 @@ export default function Collections() {
         <div className="grid grid-cols-4 gap-4 main-container my-8">
             {collections.map((collection) => (
                 <div className="bg-white rounded-md">
-                    <Link key={collection.id} href={`/collections/${collection.id}`} className="block overflow-hidden rounded-md shadow-lg">
+                    <Link 
+                        key={collection.id} 
+                        href={{
+                            pathname: '/collection/[id]',
+                            query: { 
+                                id: collection.id, 
+                                data: JSON.stringify(collection) // Serialize collection
+                            }
+                        }}
+                        as={`/collection/${collection.id}`} className="block overflow-hidden rounded-md shadow-lg">
                         <img src={collection.cover_image?.url} alt={collection.name} className="w-full h-full object-cover pt-4 pl-4 pr-4"/>
                         <div className="px-6 py-4 section-title">
                             <h2 className="text-lg font-bold text-center">{collection.name}</h2>

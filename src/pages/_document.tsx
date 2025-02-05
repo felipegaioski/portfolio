@@ -13,17 +13,9 @@ export default function Document() {
                 <meta property="og:url" content="" />
                 <link rel="icon" href="/taboleiro_icon.png" />
             </Head>
-            <link
-                rel="stylesheet"
-                href="/css/justified-gallery.min.css"
-            />
             <body className="antialiased">
                 <Main />
                 <NextScript />
-                <script
-                    src="/js/jquery.justifiedGallery.js"
-                    defer
-                ></script>
             </body>
         </Html>
     );
