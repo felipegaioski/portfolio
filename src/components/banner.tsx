@@ -9,7 +9,7 @@ export default function Banner() {
 
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+    }, []);  
 
 	return (
         <section className="hero" style={{ backgroundPosition: `center calc(30% + ${offset}px)` }}>

@@ -5,6 +5,7 @@ import { Collection } from '@/types/types';
 export default function Collections() {
     const [collections, setCollections] = useState<Collection[]>([]);
     const [error, setError] = useState<string | null>(null);
+    const [isLoading, setIsLoading] = useState<boolean>(true); // Track loading state
 
     useEffect(() => {
         const fetchCollections = async () => {
@@ -19,6 +20,8 @@ export default function Collections() {
                 }
             } catch {
                 setError('Erro ao carregar collections');
+            } finally {
+                setIsLoading(false); // Stop loading after fetching data
             }
         };
 
@@ -27,26 +30,43 @@ export default function Collections() {
 
     return (
         <div className="grid grid-cols-4 gap-4 main-container my-8">
-            {collections.map((collection) => (
-                <div className="bg-white rounded-md">
-                    <Link 
-                        key={collection.id} 
-                        href={{
-                            pathname: '/collection/[id]',
-                            query: { 
-                                id: collection.id, 
-                                data: JSON.stringify(collection) // Serialize collection
-                            }
-                        }}
-                        as={`/collection/${collection.id}`} className="block overflow-hidden rounded-md shadow-lg">
-                        <img src={collection.cover_image?.url} alt={collection.name} className="w-full h-full object-cover pt-4 pl-4 pr-4"/>
-                        <div className="px-6 py-4 section-title">
-                            <h2 className="text-lg font-bold text-center">{collection.name}</h2>
-                        </div>
-                    </Link>
+            {isLoading && (  
+                <div className="col-span-4 flex justify-center items-center">
+                    <div className="w-12 h-12 border-4 border-blue-500 border-t-transparent rounded-full animate-spin"></div>
                 </div>
+            )}
+
+            {!isLoading && collections.map((collection) => (
+                <div className="bg-white rounded-md group transition-all duration-300 hover:shadow-xl overflow-hidden">
+                <Link 
+                    href={{
+                        pathname: '/collection/[id]',
+                        query: { 
+                            id: collection.id, 
+                            data: JSON.stringify(collection)
+                        }
+                    }}
+                    as={`/collection/${collection.id}`} 
+                    className="block overflow-hidden rounded-md shadow-lg"
+                >
+                    <div className="overflow-hidden m-3"> 
+                        <img 
+                            src={collection.cover_image?.url} 
+                            alt={collection.name} 
+                            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+                        />
+                    </div>
+                    <div className="px-6 py-4 section-title">
+                        <h2 className="text-lg font-bold text-center transition-all duration-300 group-hover:tracking-wider">
+                            {collection.name}
+                        </h2>
+                    </div>
+                </Link>
+            </div>
+            
             ))}
-            {error && <p className="text-red-500">{error}</p>}
+
+            {!isLoading && error && <p className="text-red-500 col-span-4 text-center">{error}</p>}
         </div>
     );
 }
