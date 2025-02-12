@@ -10,7 +10,7 @@ export default function Header() {
                 <Link href="/">Home</Link>
                 <Link href="/gallery">Gallery</Link>
                 <Link href="#">About</Link>
-                <Link href="#">Contact</Link>
+                <Link href="/gear">Gear</Link>
             </nav>
         </header>
     );

@@ -126,6 +126,12 @@ header nav a:hover {
     position: relative; */
 }
 
+@media (min-width: 1600px) {
+    .hero {
+        padding: 12rem 1rem;
+    }
+}
+
 .hero-content {
     position: relative;
     z-index: 2;
@@ -274,4 +280,12 @@ footer {
   
 .animate-pulse {
     animation: pulse 1.5s infinite;
+}
+
+.card-image {
+    transition: transform 0.3s ease-in-out;
+}
+
+.card-image:hover {
+    transform: scale(1.05);
 }
