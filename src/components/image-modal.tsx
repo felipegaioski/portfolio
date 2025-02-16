@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Photo } from '../types/types';
+import Image from 'next/image';
 
 type PhotoModalProps = {
     image: Photo;
@@ -45,10 +46,12 @@ export default function ImageModal({ image, onClose }: PhotoModalProps) {
                 <div className="grid grid-cols-4 gap-8 flex-1 overflow-hidden">
                     {/* Image Container */}
                     <div className="col-span-3 flex justify-center items-center">
-                        <img 
-                            src={image.url} 
+                        <Image
+                            src={image.url}
+                            width={image.width}
+                            height={image.height} 
                             alt={image.collection.name} 
-                            className="max-w-full max-h-full object-contain"
+                            className="h-[83vh] w-auto object-contain"
                         />
                     </div>
 

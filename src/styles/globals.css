@@ -35,7 +35,7 @@ body {
     font-family: "Staatliches", serif;
     background-color: #ffffff;
     color: var(--tertiary);
-    background-image: url('/images/clouds.png');
+    background-image: url('/images/clouds2.png');
     background-repeat: repeat;
 }
 header {
@@ -126,15 +126,12 @@ header nav a:hover {
     position: relative; */
 }
 
-<<<<<<< HEAD
-=======
 @media (min-width: 1600px) {
     .hero {
         padding: 12rem 1rem;
     }
 }
 
->>>>>>> pages
 .hero-content {
     position: relative;
     z-index: 2;
@@ -291,4 +288,40 @@ footer {
 
 .card-image:hover {
     transform: scale(1.05);
+}
+
+.gear-container {
+    background-color: rgba(255,255,255,0.5);
+    border-radius: 5px;
+}
+
+.tab {
+    width: 100%;
+    border-radius: 5px 5px 0 0;
+    padding: 3vh 1vh;
+    position: relative;
+    background: white;
+    cursor: pointer;
+    height: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex: 1;
+    min-width: 0;
+    user-select: none;
+    color: #0f1115;
+    font-size: 1.5rem;
+}
+
+.gear-title {
+    font-size: 2rem;
+}
+
+.gear-description {
+    font-size: 1rem;
+}
+
+.page-title {
+    font-size: 2rem;
+    font-size: 3rem;
 }

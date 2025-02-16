@@ -9,7 +9,7 @@ export default function CollectionPage() {
     const router = useRouter();
     const { id } = router.query;
     const [collection, setCollection] = useState<Collection | null>(null);
-    const [loading, setLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
@@ -28,7 +28,7 @@ export default function CollectionPage() {
             } catch {
                 setError('Erro ao carregar a coleção');
             } finally {
-                // setLoading(false);
+                setIsLoading(false);
             }
         };
 
@@ -37,22 +37,19 @@ export default function CollectionPage() {
 
     if (error) return <p>{error}</p>;
 
-    function Loading() {
-        return <h2>🌀 Loading...</h2>;
-    }
-
     return (
         <Layout>
-            {collection ? (
+            {isLoading && (  
+                <div className="col-span-4 flex justify-center items-center py-8">
+                    <div className="w-12 h-12 border-4 border-slate-500 border-t-transparent rounded-full animate-spin"></div>
+                </div>
+            )}
+            {!isLoading && collection ? (
                 <>
                     <CollectionSection collection={collection} />
-                    <Suspense fallback={<Loading />}>
-                        <ImageGrid collectionId={collection.id} />
-                    </Suspense>
+                    <ImageGrid collectionId={collection.id} />
                 </>
-            ) : (
-                <p>Erro ao carregar Coleção</p>
-            )}
+            ) : (null)}
         </Layout>
     );
 }
