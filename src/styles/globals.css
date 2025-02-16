@@ -35,7 +35,7 @@ body {
     font-family: "Staatliches", serif;
     background-color: #ffffff;
     color: var(--tertiary);
-    background-image: url('/images/clouds2.png');
+    background-image: url('https://i.postimg.cc/xdsxwL40/clouds2.png');
     background-repeat: repeat;
 }
 header {
@@ -116,7 +116,7 @@ header nav a:hover {
 .hero {
     text-align: center;
     padding: 8rem 1rem;
-    background-image: url('/images/IMG_5798-Pano.jpg');
+    background-image: url('ttps://i.postimg.cc/gk9SbzN6/IMG-5798-Pano.jpg');
     background-size: cover;
     background-position: center;
     /* background-attachment: fixed;
