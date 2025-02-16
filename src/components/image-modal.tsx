@@ -25,7 +25,7 @@ export default function ImageModal({ image, onClose }: PhotoModalProps) {
         }
     };
 
-    const size = typeof window === 'undefined' ? 0 : window.innerWidth;
+    // const size = typeof window === 'undefined' ? 0 : window.innerWidth;
     // let max_height;
     
     // if (size > 1200) {
