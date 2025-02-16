@@ -31,7 +31,7 @@ const gear = [
             {
                 name: "Olympus Trip MD3",
                 description: "Lent to me as well. Had to fix a few things, but works nicely now. A simple, but fun to use point-and-shoot.",
-                image: "https://i.postimg.cc/LXnC2hcj/md3.pn",
+                image: "https://i.postimg.cc/LXnC2hcj/md3.png",
             },
             {
                 name: "Kapsa Pinta Vermelha",
