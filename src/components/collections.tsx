@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Collection } from '@/types/types';
+import Image from 'next/image';
 
 export default function Collections() {
     const [collections, setCollections] = useState<Collection[]>([]);
@@ -56,7 +57,7 @@ export default function Collections() {
                         <div className="overflow-hidden m-3"> 
                             <img 
                                 src={collection.cover_image?.url} 
-                                alt={collection.name} 
+                                alt={collection.name}
                                 className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
                             />
                         </div>

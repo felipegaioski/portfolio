@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router';
-import { useEffect, useState, Suspense } from 'react';
+import { useEffect, useState } from 'react';
 import CollectionSection from '@/components/collection-section';
 import { Collection } from '@/types/types';
 import ImageGrid from '@/components/image-grid';

@@ -1,6 +1,4 @@
-import ImageGrid from "@/components/image-grid";
 import { Collection } from "@/types/types";
-import { log } from "node:console";
 
 export default function CollectionSection({ collection }: { collection: Collection }) {
     return (

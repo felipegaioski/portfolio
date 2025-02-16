@@ -4,7 +4,6 @@ export default function Document() {
     return (
         <Html lang="en">
             <Head>
-                <title>Felipe Gaioski - Portfolio</title>
                 <meta name="description" content=" " />
                 <meta property="og:title" content="Photography portfolio" />
                 <meta property="og:description" content=" " />

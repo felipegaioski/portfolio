@@ -2,7 +2,7 @@
 export default function Footer() {
     return (
         <footer>
-            <p>© 2025 My Photography Portfolio. All Rights Reserved.</p>
+            <p>Felipe Gaioski - Portfolio &copy; {new Date().getFullYear()} . All Rights Reserved.</p>
         </footer>
     );
 }

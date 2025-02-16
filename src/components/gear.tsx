@@ -1,9 +1,7 @@
 "use client"
 import { motion } from "framer-motion";
 import { AnimatePresence } from "framer-motion"
-import { div } from "framer-motion/client";
 import Image from "next/image";
-import type { Variants } from "framer-motion";
 import { useState } from "react";
 
 const gear = [
@@ -170,13 +168,6 @@ const underline: React.CSSProperties = {
     right: 0,
     height: 2,
     background: "var(--primary)",
-}
-
-const iconContainer: React.CSSProperties = {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-    flex: 1,
 }
 
 const icon: React.CSSProperties = {

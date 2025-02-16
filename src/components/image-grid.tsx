@@ -49,7 +49,7 @@ export default function ImageGrid({ collectionId }: { collectionId: number }) {
     if (error) return <div>Erro: {error}</div>;
 
     const size = typeof window === 'undefined' ? 0 : window.innerWidth;
-    let remValue = size > 1200 ? '25rem' : size > 1024 ? '20rem' : '15rem';
+    const remValue = size > 1200 ? '25rem' : size > 1024 ? '20rem' : '15rem';
 
     const openModal = (image: Photo) => setSelectedImage(image);
     const closeModal = () => setSelectedImage(null);
