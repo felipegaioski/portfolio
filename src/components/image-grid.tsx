@@ -55,7 +55,7 @@ export default function ImageGrid({ collectionId }: { collectionId: number }) {
     const closeModal = () => setSelectedImage(null);
 
     return (
-        <section>
+        <section className='mb-8'>
             <div className="px-2">
                 <div className="justified-grid-gallery">
                     {images.map((image, index) => (

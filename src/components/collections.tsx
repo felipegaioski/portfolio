@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { Collection } from '@/types/types';
+import { useLanguage } from "../contexts/language-context";
 
 export default function Collections() {
     const [collections, setCollections] = useState<Collection[]>([]);
     const [error, setError] = useState<string | null>(null);
     const [isLoading, setIsLoading] = useState<boolean>(true); // Track loading state
+    const { language } = useLanguage();
 
     useEffect(() => {
         const fetchCollections = async () => {
@@ -31,7 +33,8 @@ export default function Collections() {
     return (
         <div className="main-container">
             <div className="page-title mt-8">
-                <h2>Gallery</h2>
+                { language === "en" && <h2>Gallery</h2> }
+                { language === "pt-br" && <h2>Galeria</h2> }
             </div>
             <div className="grid grid-cols-4 gap-4 my-8">
                 {isLoading && (  
@@ -62,7 +65,7 @@ export default function Collections() {
                             </div>
                             <div className="px-6 pb-4 section-title">
                                 <h2 className="text-lg font-bold text-center transition-all duration-300 group-hover:tracking-wider">
-                                    {collection.name}
+                                    { language === "en" ? collection.name : collection.name_ptbr}
                                 </h2>
                             </div>
                         </Link>

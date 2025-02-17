@@ -32,6 +32,7 @@ export interface Iso {
 export interface Collection {
     id: number;
     name: string;
+    name_ptbr: string;
     cover_image: Photo;
     description: string;
 }

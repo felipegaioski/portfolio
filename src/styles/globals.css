@@ -359,3 +359,23 @@ footer {
     background-color: #9911ff;
     border-radius: 50%;
 }
+
+.footer-name {
+    transition: 0.4s ease;
+}
+
+.footer-name:hover {
+    text-decoration: none;
+    color: #fff;
+    transition: 0.4s ease;
+}
+
+.footer-icons a {
+    transition: 0.4s ease;
+}
+
+.footer-icons a:hover {
+    transform: translateY(-2px);
+    color: #fff;
+    transition: 0.4s ease;
+}
