@@ -22,6 +22,8 @@
     --background: #ffffff;
     --foreground: #171717;
     --detail: #f3f3f3;
+    --toggle-background: #3b3b3b;
+    --toggle-handle: #f3f3f3;
 }
 
 /* body {
@@ -325,4 +327,35 @@ footer {
 .page-title {
     font-size: 2rem;
     font-size: 3rem;
+}
+
+.settings {
+    background-color: #fff;
+    border-radius: 7px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    width: 30vh;
+    height: 45vh;
+    position: fixed;
+    top: 8vh;
+    right: 5vh;
+    /* transform: translate(-50%, -50%); */
+    z-index: 9999;
+}
+
+.toggle-container {
+    width: 15vh;
+    height: 7.5vh;
+    background-color: var(--primary);
+    border-radius: 50px;
+    cursor: pointer;
+    display: flex;
+    padding: 10;
+}
+
+.toggle-handle {
+    width: 50;
+    height: 50;
+    background-color: #9911ff;
+    border-radius: 50%;
 }

@@ -1,4 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
+import { LanguageProvider } from "../contexts/language-context";
 
 export default function Document() {
     return (
@@ -13,8 +14,10 @@ export default function Document() {
                 <link rel="icon" href="/taboleiro_icon.png" />
             </Head>
             <body className="antialiased">
-                <Main />
-                <NextScript />
+                <LanguageProvider>
+                    <Main />
+                    <NextScript />
+                </LanguageProvider>
             </body>
         </Html>
     );
