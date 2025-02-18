@@ -9,8 +9,6 @@ export default function Header() {
     const [isVisible, setIsVisible] = useState(false);
     const { language } = useLanguage();
 
-    const router = useRouter();
-
     let home: string = '';
     let gallery: string = '';
     let about: string = '';
