@@ -16,42 +16,70 @@
 }
 
 html[data-theme="dark"] {
-    --body-bg-color: #23292f;
-    --tertiary: #ededed;
+    --body-bg-color: #212325;
+    --foreground: #ededed;
+    --primary: #19417D;
+    --secondary: #1C293D;
+    --tertiary: #B1CFFC;
+    --fourth: #7D5C19;
+    --fifth: #D1A854;
+    --footer-color: #18191a;
+    --foreground-two: #ededed;
 }
 
 :root {
-    --primary: #38b2ac;
-    --secondary: #1a202c;
-    --tertiary: #3b3b3b;
-    --body-bg-color: #ffffff;
-    --foreground: #171717;
+    --primary: #19417D;
+    --secondary: #1C293D;
+    --tertiary: #B1CFFC;
+    --fourth: #7D5C19;
+    --fifth: #D1A854;
+    --body-bg-color: #ededed;
+    --foreground: #212325;
     --detail: #f3f3f3;
     --toggle-background: #3b3b3b;
     --toggle-handle: #f3f3f3;
+    --footer-color: #212325;
+    --foreground-two: #ededed;
 }
 
-/* body {
-    margin: 0;
-    font-family: "Gayathri", serif;
-    background-color: #ffffff;
-    color: var(--tertiary);
-} */
 body {
     margin: 0;
     font-family: "Staatliches", serif;
     background-color: var(--body-bg-color);
-    color: var(--tertiary);
-    background-image: url('https://i.postimg.cc/xdsxwL40/clouds2.png');
+    color: var(--foreground);
     background-repeat: no-repeat;
     background-size: cover;
+    position: relative;
 }
+
+/* Criar o overlay da imagem */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url("https://i.postimg.cc/xdsxwL40/clouds2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: 1; /* Opacidade padrão */
+    transition: opacity 0.3s ease-in-out;
+    z-index: -1; /* Mantém a imagem atrás do conteúdo */
+}
+
+/* Reduz a opacidade da imagem no modo escuro */
+html[data-theme="dark"] body::before {
+    opacity: 0.3; /* Ajuste a opacidade para escurecer a imagem */
+}
+
 header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0rem;
-    background-color: transparent;
+    background-color: var(--body-bg-color);
+    color: var(--foreground);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 header h1 {
@@ -63,14 +91,14 @@ header h1 {
     padding: 0;
 }
 header nav a {
-    color: var(--tertiary);
+    color: var(--foreground);
     text-decoration: none;
     margin-left: 1.5rem;
     font-size: 1.2rem;
     transition: color 0.3s;
 }
 header nav a:hover {
-    color: var(--secondary);
+    color: var(--fifth);
 }
 
 .fade-in {
@@ -145,12 +173,15 @@ header nav a:hover {
 }
 
 .hero h2 {
-    color: #fff;
+    color: var(--foreground-two);
     font-size: 4rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     margin-bottom: 1rem;
 }
 .hero p {
-    color: #a0aec0;
+    color: var(--fifth);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 1.2rem;
 }
 .hero button {
     margin-top: 2rem;
@@ -169,8 +200,8 @@ header nav a:hover {
 footer {
     text-align: center;
     padding: 1rem;
-    background-color: #2d3748;
-    color: #a0aec0;
+    background-color: var(--footer-color);
+    color: var(--foreground-two);
 }
 
 .photo-meta {
@@ -241,14 +272,14 @@ footer {
 .section-title .title-text {
     font-size: 3rem;
     font-weight: 600;
-    color: var(--secondary);
+    color: var(--foreground);
     padding-bottom: 1rem;
 }
 
 .section-title .sub-text {
     font-size: 1.2rem;
     font-weight: 400;
-    color: var(--secondary);
+    color: var(--foreground);
     padding-bottom: 1rem;
 }
 
@@ -320,6 +351,10 @@ footer {
     font-size: 1.5rem;
 }
 
+.gear-text {
+    color: var(--body-bg-color);
+}
+
 .gear-title {
     font-size: 2rem;
 }
@@ -331,6 +366,11 @@ footer {
 .page-title {
     font-size: 2rem;
     font-size: 3rem;
+}
+
+.page-title h2 {
+    border-bottom: 3px solid var(--primary);
+    width: fit-content;
 }
 
 .settings {
@@ -348,19 +388,19 @@ footer {
 }
 
 .toggle-container {
-    width: 15vh;
-    height: 7.5vh;
-    background-color: var(--primary);
-    border-radius: 50px;
+    width: 80;
+    height: 40;
+    background-color: var(--fourth);
+    border-radius: 50;
     cursor: pointer;
     display: flex;
-    padding: 10;
+    padding: 5;
 }
 
 .toggle-handle {
-    width: 50;
-    height: 50;
-    background-color: #9911ff;
+    width: 30;
+    height: 30;
+    background-color: var(--fifth);
     border-radius: 50%;
 }
 
@@ -370,7 +410,7 @@ footer {
 
 .footer-name:hover {
     text-decoration: none;
-    color: #fff;
+    color: var(--fifth);
     transition: 0.4s ease;
 }
 
@@ -380,6 +420,12 @@ footer {
 
 .footer-icons a:hover {
     transform: translateY(-2px);
-    color: #fff;
+    color: var(--fifth);
     transition: 0.4s ease;
+}
+
+.collection-card {
+    background-color: var(--body-bg-color);
+    color: var(--foreground);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

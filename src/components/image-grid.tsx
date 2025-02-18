@@ -4,25 +4,44 @@ import { Photo } from '../types/types';
 import Image from 'next/image';
 import ImageModal from "./image-modal";
 
-export default function ImageGrid({ collectionId }: { collectionId: number }) {
+type ImageGridProps = 
+  | { collectionId: number; recent?: false }
+  | { collectionId?: never; recent: boolean };
+
+export default function ImageGrid({ collectionId, recent }: ImageGridProps) {
     const [images, setImages] = useState<Photo[]>([]);
     const [error, setError] = useState<string | null>(null);
     const [selectedImage, setSelectedImage] = useState<Photo | null>(null);
     const [visibleImages, setVisibleImages] = useState(new Set<number>());
+    const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {
-        if (!collectionId) return; 
-
-        fetch(`/api/images/${collectionId}`)
-            .then((res) => res.json())
-            .then((data) => {                
-                if (data.error) {
-                    setError(data.error);
-                } else {
-                    setImages(data.images);
-                }
-            })
-            .catch(() => setError('Erro ao carregar imagens'));
+        if (collectionId) {
+            fetch(`/api/images/${collectionId}`)
+                .then((res) => res.json())
+                .then((data) => {                
+                    if (data.error) {
+                        setError(data.error);
+                    } else {
+                        setImages(data.images);
+                    }
+                })
+                .catch(() => setError('Erro ao carregar imagens'))
+                .finally(() => setIsLoading(false));
+        }
+        if (recent) {
+            fetch(`/api/images/recent`)
+                .then((res) => res.json())
+                .then((data) => {                
+                    if (data.error) {
+                        setError(data.error);
+                    } else {
+                        setImages(data.images);
+                    }
+                })
+                .catch(() => setError('Erro ao carregar imagens'))
+                .finally(() => setIsLoading(false));
+        }
     }, [collectionId]);
 
     useEffect(() => {
@@ -57,7 +76,7 @@ export default function ImageGrid({ collectionId }: { collectionId: number }) {
     return (
         <section className='mb-8'>
             <div className="px-2">
-                <div className="justified-grid-gallery">
+                { !isLoading && <div className="justified-grid-gallery">
                     {images.map((image, index) => (
                         <div
                             key={index}
@@ -94,7 +113,7 @@ export default function ImageGrid({ collectionId }: { collectionId: number }) {
                             </div>
                         </div>
                     ))}
-                </div>
+                </div> }
             </div>
             {selectedImage && <ImageModal image={selectedImage} onClose={closeModal} />}
         </section>

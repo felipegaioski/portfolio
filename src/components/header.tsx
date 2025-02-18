@@ -31,7 +31,7 @@ export default function Header() {
     }
     
     return (
-        <header className={`main-container fade-in ${hasPage ? 'bg-white' : ''}`}>
+        <header className="main-container fade-in">
             <Link href="/" className="text-center transition-all duration-300 hover:tracking-wider">
                 <h1>Felipe Gaioski</h1>
             </Link>

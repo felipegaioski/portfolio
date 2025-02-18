@@ -148,7 +148,7 @@ const Gear = () => {
                                                 height={250}
                                             />
                                         </div>
-                                        <div className="flex flex-col justify-center">
+                                        <div className="gear-text flex flex-col justify-center">
                                             <h3 className="font-bold gear-title">{item.name}</h3>
                                             <p className="gear-description">{ language === "en" ? item.en : item.ptbr }</p>
                                         </div>
@@ -184,7 +184,7 @@ const underline: React.CSSProperties = {
     bottom: -2,
     left: 0,
     right: 0,
-    height: 2,
+    height: 3,
     background: "var(--primary)",
 }
 

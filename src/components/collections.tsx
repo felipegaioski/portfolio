@@ -44,7 +44,7 @@ export default function Collections() {
                 )}
 
                 {!isLoading && collections.map((collection, index) => (
-                    <div key={index} className="bg-white rounded-md group transition-all duration-300 hover:shadow-xl overflow-hidden">
+                    <div key={index} className="collection-card rounded-md group transition-all duration-300 hover:shadow-xl overflow-hidden">
                         <Link 
                             href={{
                                 pathname: '/collection/[id]',

@@ -31,7 +31,7 @@ export default function ThemeSwitcher() {
     const container = {
         width: 80,
         height: 40,
-        backgroundColor: "var(--toggle-background)",
+        backgroundColor: "var(--primary)",
         borderRadius: 50,
         cursor: "pointer",
         display: "flex",
@@ -41,7 +41,7 @@ export default function ThemeSwitcher() {
     const handle = {
         width: 30,
         height: 30,
-        backgroundColor: "var(--toggle-handle)",
+        backgroundColor: "var(--tertiary)",
         borderRadius: "50%",
     }
 
