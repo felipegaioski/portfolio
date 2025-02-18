@@ -2,6 +2,7 @@
 import { motion, AnimatePresence } from 'motion/react';
 import { useLanguage } from "../contexts/language-context";
 import LanguageSwitcher from "./language-switcher";
+import ThemeSwitcher from "./theme-switcher";   
 
 export default function SettingsModal() {
     const { language } = useLanguage();
@@ -24,6 +25,9 @@ export default function SettingsModal() {
                 <hr className='pb-5'/>
                 <div>
                     <LanguageSwitcher />
+                </div>
+                <div>
+                    <ThemeSwitcher />
                 </div>
                 {/* Repeat the toggle buttons for other settings */}
             </motion.div>

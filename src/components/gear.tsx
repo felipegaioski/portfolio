@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from 'motion/react';
 import Image from "next/image";
 import { useState } from "react";
 import { useLanguage } from "../contexts/language-context";
-import SEO from "@/components/seo";
 
 const gear = [
     {
@@ -98,7 +97,6 @@ const Gear = () => {
 
     return (
         <div>
-            <SEO pageTitle={ language === "en" ? "Gear - Felipe Gaioski Portfolio" : "Equipamentos - Portfolio Felipe Gaioski" } pageDescription={ language === "en" ? "My gear" : "Meus equipamentos" } />
             <div className="main-container">
                 <div className="page-title mt-8">
                     { language === "en" && <h2>Gear</h2> }

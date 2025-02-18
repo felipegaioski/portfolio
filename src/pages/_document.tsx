@@ -1,7 +1,8 @@
 import { Html, Head, Main, NextScript } from "next/document";
 import { LanguageProvider } from "../contexts/language-context";
+import { ThemeProvider } from "../contexts/theme-context";
 
-export default function Document() {
+export default function Document() {   
     return (
         <Html lang="en">
             <Head>
@@ -15,8 +16,10 @@ export default function Document() {
             </Head>
             <body className="antialiased">
                 <LanguageProvider>
-                    <Main />
-                    <NextScript />
+                    <ThemeProvider>
+                        <Main />
+                        <NextScript />
+                    </ThemeProvider>
                 </LanguageProvider>
             </body>
         </Html>

@@ -10,16 +10,21 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --body-bg-color: #23292f;
+    --tertiary: #ededed;
   }
+}
+
+html[data-theme="dark"] {
+    --body-bg-color: #23292f;
+    --tertiary: #ededed;
 }
 
 :root {
     --primary: #38b2ac;
     --secondary: #1a202c;
     --tertiary: #3b3b3b;
-    --background: #ffffff;
+    --body-bg-color: #ffffff;
     --foreground: #171717;
     --detail: #f3f3f3;
     --toggle-background: #3b3b3b;
@@ -35,7 +40,7 @@
 body {
     margin: 0;
     font-family: "Staatliches", serif;
-    background-color: #ffffff;
+    background-color: var(--body-bg-color);
     color: var(--tertiary);
     background-image: url('https://i.postimg.cc/xdsxwL40/clouds2.png');
     background-repeat: no-repeat;
@@ -46,7 +51,6 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0rem;
-    /* background-color: #fff; */
     background-color: transparent;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
@@ -330,7 +334,7 @@ footer {
 }
 
 .settings {
-    background-color: #fff;
+    background-color: var(--body-bg-color);
     border-radius: 7px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
