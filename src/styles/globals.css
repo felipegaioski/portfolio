@@ -25,6 +25,7 @@ html[data-theme="dark"] {
     --fifth: #D1A854;
     --footer-color: #18191a;
     --foreground-two: #ededed;
+    --foreground-three: #212325;
 }
 
 :root {
@@ -40,6 +41,7 @@ html[data-theme="dark"] {
     --toggle-handle: #f3f3f3;
     --footer-color: #212325;
     --foreground-two: #ededed;
+    --foreground-three: #212325;
 }
 
 body {
@@ -352,7 +354,7 @@ footer {
 }
 
 .gear-text {
-    color: var(--body-bg-color);
+    color: var(--foreground-three);
 }
 
 .gear-title {
