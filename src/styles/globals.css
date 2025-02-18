@@ -102,6 +102,9 @@ header nav a {
 header nav a:hover {
     color: var(--fifth);
 }
+header nav button:hover {
+    color: var(--fifth);
+}
 
 .fade-in {
     animation: fadeIn 0.5s ease-in-out;
@@ -430,4 +433,19 @@ footer {
     background-color: var(--body-bg-color);
     color: var(--foreground);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+    animation: neon 3s ease-in-out infinite;
+}
+
+
+@keyframes neon {
+    0%,
+    100% {
+        text-shadow: 0 0 3px var(--tertiary), 0 0 5px var(--tertiary), 0 0 10px var(--tertiary);
+    }
+    50% {
+        text-shadow: 0 0 3px var(--foregroung-two), 0 0 5px var(--foregroung-two), 0 0 10px var(--foregroung-two);
+    }
 }

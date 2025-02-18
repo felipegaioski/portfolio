@@ -1,36 +1,39 @@
 "use client"
-import { motion, AnimatePresence } from 'motion/react';
+import { motion } from 'motion/react';
 import { useLanguage } from "../contexts/language-context";
 import LanguageSwitcher from "./language-switcher";
-import ThemeSwitcher from "./theme-switcher";   
+import ThemeSwitcher from "./theme-switcher";
+import { IoCloseSharp } from "react-icons/io5";
 
-export default function SettingsModal() {
+export default function SettingsModal({ onClose }: { onClose: () => void }) {
     const { language } = useLanguage();
 
     return (
-        <AnimatePresence>
-            <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{
-                    type: "spring",
-                    bounce: 0.2,
-                    duration: 0.5,
-                }}
-                className='settings'
-            >
+        <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            exit={{ scale: 0 }}
+            transition={{
+                type: "spring",
+                bounce: 0.3,
+                duration: 0.5,
+            }}
+            className='settings'
+        >
+        <div>
+            <div className='flex justify-between'>
                 { language === "en" && <h2 className='text-2xl pb-2'>Settings</h2> }
                 { language === "pt-br" && <h2 className='text-2xl pb-2'>Configurações</h2> }
-                <hr className='pb-5'/>
-                <div>
-                    <LanguageSwitcher />
-                </div>
-                <div>
-                    <ThemeSwitcher />
-                </div>
-                {/* Repeat the toggle buttons for other settings */}
-            </motion.div>
-        </AnimatePresence>
+                <IoCloseSharp className='cursor-pointer text-2xl' onClick={onClose}/>
+            </div>
+            <hr className='pb-5'/>
+            <div>
+                <LanguageSwitcher />
+            </div>
+            <div>
+                <ThemeSwitcher />
+            </div>
+        </div>
+        </motion.div>
     );
 };
