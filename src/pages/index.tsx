@@ -7,7 +7,6 @@ import SEO from "@/components/seo";
 
 export default function Home() {
 	const { language } = useLanguage();
-	const { theme } = useTheme();
 
 	return (
 		<Layout>
