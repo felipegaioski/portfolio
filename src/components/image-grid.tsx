@@ -42,7 +42,7 @@ export default function ImageGrid({ collectionId, recent }: ImageGridProps) {
                 .catch(() => setError('Erro ao carregar imagens'))
                 .finally(() => setIsLoading(false));
         }
-    }, [collectionId]);
+    }, [collectionId, recent]);
 
     useEffect(() => {
         const observer = new IntersectionObserver(

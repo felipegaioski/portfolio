@@ -10,7 +10,6 @@ export default function Header() {
     const { language } = useLanguage();
 
     const router = useRouter();
-    const hasPage = router.pathname !== "/";
 
     let home: string = '';
     let gallery: string = '';
