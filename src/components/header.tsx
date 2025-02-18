@@ -3,7 +3,6 @@ import { FaGear } from "react-icons/fa6";
 import { useState } from "react";
 import SettingsModal from "./settings-modal";
 import { useLanguage } from "../contexts/language-context";
-import { useRouter } from "next/router";
 
 export default function Header() {
     const [isVisible, setIsVisible] = useState(false);
