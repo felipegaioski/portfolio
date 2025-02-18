@@ -9,10 +9,10 @@ export default function Header() {
     const [isVisible, setIsVisible] = useState(false);
     const { language } = useLanguage();
 
-    let home: string = language === 'en' ? 'Home' : 'Home';
-    let gallery: string = language === 'en' ? 'Gallery' : 'Galeria';
-    let about: string = language === 'en' ? 'About' : 'Sobre';
-    let gear: string = language === 'en' ? 'Gear' : 'Equipamentos';
+    const home: string = language === 'en' ? 'Home' : 'Home';
+    const gallery: string = language === 'en' ? 'Gallery' : 'Galeria';
+    const about: string = language === 'en' ? 'About' : 'Sobre';
+    const gear: string = language === 'en' ? 'Gear' : 'Equipamentos';
     
     return (
         <header className="main-container fade-in">
