@@ -2,7 +2,6 @@
 import Layout from "@/components/layout";
 import Banner from "@/components/banner";
 import { useLanguage } from "../contexts/language-context";
-import { useTheme } from "../contexts/theme-context";
 import SEO from "@/components/seo";
 
 export default function Home() {
