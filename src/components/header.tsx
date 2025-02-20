@@ -17,7 +17,6 @@ export default function Header() {
     const gallery = language === 'en' ? 'Gallery' : 'Galeria';
     const about = language === 'en' ? 'About' : 'Sobre';
     const gear = language === 'en' ? 'Gear' : 'Equipamentos';
-    const settings = language === 'en' ? 'Settings' : 'Configurações';
 
     return (
         <>

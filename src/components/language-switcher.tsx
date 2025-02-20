@@ -4,14 +4,14 @@ import { motion } from 'motion/react';
 
 export default function LanguageSwitcher() {
     const { language, setLanguage } = useLanguage();
-    function toggleLanguage() {
-        if (language === "en") {
-            setLanguage("pt-br");
-        }
-        if (language === "pt-br") {
-            setLanguage("en");
-        }
-    }
+    // function toggleLanguage() {
+    //     if (language === "en") {
+    //         setLanguage("pt-br");
+    //     }
+    //     if (language === "pt-br") {
+    //         setLanguage("en");
+    //     }
+    // }
 
     return (
         <motion.div
