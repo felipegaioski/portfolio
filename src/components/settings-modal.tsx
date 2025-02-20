@@ -30,6 +30,7 @@ export default function SettingsModal({ onClose }: { onClose: () => void }) {
             <div>
                 <LanguageSwitcher />
             </div>
+            <hr className='py-2'/>
             <div>
                 <ThemeSwitcher />
             </div>

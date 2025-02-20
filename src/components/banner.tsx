@@ -1,8 +1,11 @@
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useLanguage } from "../contexts/language-context";
 
 export default function Banner() {
     const [offset, setOffset] = useState(0);
     const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+    const { language } = useLanguage();
 
     useEffect(() => {
         // Parallax scrolling effect
@@ -24,6 +27,10 @@ export default function Banner() {
             window.removeEventListener("mousemove", handleMouseMove);
         };
     }, []);
+    
+    const title = language === 'en' ? 'Photography Portfolio' : 'Portfolio de fotografia';
+    const subtitle = language === 'en' ? 'Scenes worth remembering' : 'Cenas que merecem ser lembradas';
+    const button = language === 'en' ? 'View Gallery' : 'Ver galeria';
 
     return (
         <section className="hero" style={{ backgroundPosition: `center calc(30% + ${offset}px)` }}>
@@ -31,11 +38,16 @@ export default function Banner() {
                 <h2 style={{
                     transform: `translate(${-mousePos.x * 0.5}px, ${-mousePos.y * 0.5}px)`, // Moves in opposite direction
                     transition: "transform 0.1s ease-out",
-                }}>Photography Portfolio</h2>
+                }}>{ title }</h2>
                 <p style={{
                     transform: `translate(${-mousePos.x * 1}px, ${-mousePos.y * 1}px)`, // Moves in opposite direction
                     transition: "transform 0.1s ease-out",
-                }}>Scenes worth remembering</p>
+                }}>{ subtitle }</p>
+                <Link href="/gallery">
+                    <button className="cta-button">
+                        { button }
+                    </button>
+                </Link>
             </div>
         </section>
     );

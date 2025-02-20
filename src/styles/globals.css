@@ -26,6 +26,10 @@ html[data-theme="dark"] {
     --footer-color: #18191a;
     --foreground-two: #ededed;
     --foreground-three: #212325;
+    --body-bg-secondary: #2d2f31;
+    --greyed: #a3a3a3;
+    --shadow-keyframe-one: rgb(125, 92, 25, 0.7);
+    --shadow-keyframe-two: rgb(125, 92, 25, 0);
 }
 
 :root {
@@ -36,12 +40,15 @@ html[data-theme="dark"] {
     --fifth: #D1A854;
     --body-bg-color: #ededed;
     --foreground: #212325;
-    --detail: #f3f3f3;
+    --body-bg-secondary: #f3f3f3;
     --toggle-background: #3b3b3b;
     --toggle-handle: #f3f3f3;
     --footer-color: #212325;
     --foreground-two: #ededed;
     --foreground-three: #212325;
+    --greyed: #a3a3a3;
+    --shadow-keyframe-one: rgb(125, 92, 25, 0.7);
+    --shadow-keyframe-two: rgb(125, 92, 25, 0);
 }
 
 body {
@@ -155,7 +162,7 @@ header nav button:hover {
 
 .hero {
     text-align: center;
-    padding: 8rem 1rem;
+    padding: 7rem 1rem;
     background-image: url('https://i.postimg.cc/gk9SbzN6/IMG-5798-Pano.jpg');
     background-size: cover;
     background-position: center;
@@ -172,9 +179,93 @@ header nav button:hover {
     }
 }
 
+@media (max-width: 768px) {
+    .main-container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .hero {
+        padding: 3rem 1rem;
+    }
+
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 99;
+    }
+
+    .mobile-menu {
+        display: block;
+        transition: 0.4s ease;
+    }
+
+    .header-nav {
+        display: none;
+    }
+
+    .settings-content {
+        font-size: 1rem;
+    }
+
+    .toggle-container {
+        width: 60px;
+        height: 15px;
+        border-radius: 48px;
+        padding: 5px;
+    }
+    
+    .toggle-handle {
+        width: 23.5px;
+        height: 23.5px;
+    }
+
+    .section-title .title-text {
+        font-size: 2rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+    
+    .section-title .sub-text {
+        font-size: 0.8rem !important;
+        padding-bottom: 0.5rem !important;
+    }
+}
+
+@media (min-width: 768.1px) {
+    .mobile-menu {
+        display: none;
+    }
+}
+
+.mobile-menu-list {
+    font-size: 1.2rem;
+    position: fixed;
+    top: 5rem;
+    padding: 1rem;
+    width: 100%;
+    background-color: var(--body-bg-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    z-index: 98;
+}
+
+.mobile-menu-list ul li {
+    transition: 0.4s ease;
+}
+
+.mobile-menu-list ul li:not(:last-child) {
+    margin-bottom: 0.5rem;
+}
+
+.mobile-menu-list ul li:hover {
+    transform: translateX(0.5rem);
+    transition: 0.4s ease;
+}
+
 .hero-content {
     position: relative;
     z-index: 2;
+    margin: 0 auto;
 }
 
 .hero h2 {
@@ -186,21 +277,34 @@ header nav button:hover {
 .hero p {
     color: var(--fifth);
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    font-size: 1.2rem;
+    font-size: 1.5rem;
 }
 .hero button {
     margin-top: 2rem;
     padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    background-color: #38b2ac;
+    font-size: 1.5rem;
+    background-color: var(--fifth);
     color: white;
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
-    transition: background-color 0.7s;
+    transition: 0.3s ease;
+    animation: pulse-button 2s infinite;
 }
+
+@keyframes pulse-button {
+    0% { 
+        box-shadow: 0 0 0 0 var(--shadow-keyframe-one);
+    }
+    100% { 
+        box-shadow: 0 0 0 15px var(--shadow-keyframe-two);
+    }
+}
+
 .hero button:hover {
-    background-color: #319795;
+    background-color: var(--fourth);
+    transform: scale(0.95);
+    transition: 0.2s ease;
 }
 footer {
     text-align: center;
@@ -225,16 +329,14 @@ footer {
 }
 
 .photo-meta-background {
-    background-color: var(--detail);
+    background-color: var(--body-bg-secondary);
 }
 
-/* Settings start */
 .justified-grid-gallery {
     --space: 6px;
     /* --min-height: 25rem; */
     --last-row-background: transparent;
 }
-/* Settings end */
 
 .justified-grid-gallery {
     display: flex;
@@ -393,18 +495,18 @@ footer {
 }
 
 .toggle-container {
-    width: 80;
-    height: 40;
+    width: 80px;
+    height: 40px;
     background-color: var(--fourth);
-    border-radius: 50;
+    border-radius: 50px;
     cursor: pointer;
     display: flex;
-    padding: 5;
+    padding: 5px;
 }
 
 .toggle-handle {
-    width: 30;
-    height: 30;
+    width: 30px;
+    height: 30px;
     background-color: var(--fifth);
     border-radius: 50%;
 }
@@ -448,4 +550,8 @@ footer {
     50% {
         text-shadow: 0 0 3px var(--foregroung-two), 0 0 5px var(--foregroung-two), 0 0 10px var(--foregroung-two);
     }
+}
+
+.image-modal {
+    background-color: var(--body-bg-color);
 }

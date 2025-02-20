@@ -36,7 +36,7 @@ export default function Collections() {
                 { language === "en" && <h2>Gallery</h2> }
                 { language === "pt-br" && <h2>Galeria</h2> }
             </div>
-            <div className="grid grid-cols-4 gap-4 my-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 my-8">
                 {isLoading && (  
                     <div className="col-span-4 flex justify-center items-center">
                         <div className="w-12 h-12 border-4 border-slate-500 border-t-transparent rounded-full animate-spin"></div>

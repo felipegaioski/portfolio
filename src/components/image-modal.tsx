@@ -37,10 +37,10 @@ export default function ImageModal({ image, onClose }: PhotoModalProps) {
     // }
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-4" onClick={handleOverlayClick}>
-            <div className={`bg-white p-6 rounded shadow-lg relative flex flex-col h-[90vh] max-w-[90vw] overflow-hidden ${isClosing ? 'fade-out' : 'fade-in'}`}>
+        <div className=" fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-4" onClick={handleOverlayClick}>
+            <div className={`image-modal p-6 rounded shadow-lg relative flex flex-col h-[90vh] max-w-[90vw] overflow-hidden ${isClosing ? 'fade-out' : 'fade-in'}`}>
                 {/* Close Button */}
-                <button onClick={handleClose} className="absolute top-2 right-4 text-black">✖</button>
+                <button onClick={handleClose} className="absolute top-2 right-4">✖</button>
 
                 {/* Content Layout */}
                 <div className="grid grid-cols-4 gap-8 flex-1 overflow-hidden">
