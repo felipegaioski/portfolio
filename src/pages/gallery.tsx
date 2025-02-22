@@ -9,8 +9,8 @@ export default function Gallery() {
     return (
         <Layout>
             <SEO 
-                pageTitle={ language === "en" ? "Collections - Felipe Gaioski Portfolio" : "Coleções - Portfolio Felipe Gaioski" } 
-                pageDescription={ language === "en" ? "Collections" : "Coleções" } 
+                pageTitle={ language === "en" ? "Gallery - Felipe Gaioski Portfolio" : "Galeria - Portfolio Felipe Gaioski" } 
+                pageDescription={ language === "en" ? "Gallery" : "Galeria" } 
             />
             <Collections />
         </Layout>

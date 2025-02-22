@@ -9,7 +9,7 @@ export default function Banner() {
 
     useEffect(() => {
         // Parallax scrolling effect
-        const handleScroll = () => setOffset(window.scrollY * 0.8);
+        const handleScroll = () => setOffset(window.scrollY * 0.5);
 
         // Parallax mouse effect
         const handleMouseMove = (e: MouseEvent) => {

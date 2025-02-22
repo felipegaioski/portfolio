@@ -20,7 +20,7 @@ export default function ThemeSwitcher() {
         <div>
             { language === "en" && <h6 className="pb-2">Theme</h6> }
             { language === "pt-br" && <h6 className="pb-2">Tema</h6> }
-            <div className="flex w-full">
+            <div className="flex w-full items-center">
                 { language === "en" &&  <div className="w-1/4 flex justify-center">Light</div> }
                 { language === "pt-br" &&  <div className="w-1/4 flex justify-center">Claro</div> }
                 <div className="w-2/4 flex justify-center">

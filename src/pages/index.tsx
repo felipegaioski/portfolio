@@ -12,7 +12,7 @@ export default function Home() {
 		<Layout>
 			<SEO 
                 pageTitle="Felipe Gaioski - Portfolio"
-                pageDescription={ language === "en" ? "Felipe Gaioski - PhotographyPortfolio" : "Felipe Gaioski - Portfolio de fotografia" } 
+                pageDescription={ language === "en" ? "Felipe Gaioski - Photography Portfolio" : "Felipe Gaioski - Portifolio de fotografia" } 
             />
 			<Banner />
 			<div className="main-container">

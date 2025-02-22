@@ -102,7 +102,7 @@ const Gear = () => {
                     { language === "en" && <h2>Gear</h2> }
                     { language === "pt-br" && <h2>Equipamentos</h2> }
                 </div>
-                <div className="my-8 pb-4 gear-container shadow-xl">
+                <div className="my-8 pb-2 gear-container shadow-xl">
                     <nav className="gear-nav">
                         <ul style={tabsContainer}>
                             {gear.map((item) => (
@@ -139,13 +139,14 @@ const Gear = () => {
                                 style={icon}
                             >
                                 {selectedTab.items.map((item) => (
-                                    <div key={item.name} className="m-4 grid grid-cols-[1fr_2fr] gap-20 mt-10 mb-20">
+                                    <div key={item.name} className="m-4 grid gap-20 mt-10 mb-20 sm:grid-cols-[1fr_2fr] grid-cols-1">
                                         <div className="flex justify-center">
                                             <Image
                                                 src={item.image}
                                                 alt={item.name}
                                                 width={250}
                                                 height={250}
+                                                className="png-shadow"
                                             />
                                         </div>
                                         <div className="gear-text flex flex-col justify-center">

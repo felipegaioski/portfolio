@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Photo } from '../types/types';
 import Image from 'next/image';
+import { useLanguage } from "../contexts/language-context";
+import { useTheme } from "../contexts/theme-context";
 
 type PhotoModalProps = {
     image: Photo;
@@ -9,7 +11,9 @@ type PhotoModalProps = {
 
 
 export default function ImageModal({ image, onClose }: PhotoModalProps) {
-
+    const { language } = useLanguage();
+    const { theme } = useTheme();
+    
     const [isClosing, setIsClosing] = useState(false);
 
     const handleClose = () => {
@@ -37,49 +41,58 @@ export default function ImageModal({ image, onClose }: PhotoModalProps) {
     // }
 
     return (
-        <div className=" fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-4" onClick={handleOverlayClick}>
-            <div className={`image-modal p-6 rounded shadow-lg relative flex flex-col h-[90vh] max-w-[90vw] overflow-hidden ${isClosing ? 'fade-out' : 'fade-in'}`}>
+        <div 
+            className="image-modal-container fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center p-4" 
+            onClick={handleOverlayClick}
+        >
+            <div 
+                className={`image-modal p-4 rounded shadow-lg relative flex flex-col max-w-[80vw] overflow-hidden ${isClosing ? 'fade-out' : 'fade-in'}`} 
+                style={{ maxHeight: '90vh' }}
+            >
                 {/* Close Button */}
-                <button onClick={handleClose} className="absolute top-2 right-4">✖</button>
+                <button onClick={handleClose} className="absolute top-2 right-4 text-xl z-50">✖</button>
 
                 {/* Content Layout */}
-                <div className="grid grid-cols-4 gap-8 flex-1 overflow-hidden">
+                <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 flex-1 overflow-hidden items-center">
                     {/* Image Container */}
-                    <div className="col-span-3 flex justify-center items-center">
+                    <div className="col-span-3 w-full flex justify-center items-center sm:pt-0 pt-4">
+                        { theme === "dark" && <div className="absolute w-[60%] h-[80%] bg-white opacity-20 rounded-full blur-3xl ml-[20%]"></div> }
+                        { theme === "light" && <div className="absolute w-[60%] h-[80%] opacity-20 rounded-full blur-3xl ml-[20%]" style={{ backgroundColor: 'var(--primary)' }}> </div> }
                         <Image
                             src={image.url}
                             width={image.width}
-                            height={image.height} 
-                            alt={image.collection.name} 
-                            className="h-[83vh] w-auto object-contain"
+                            height={image.height}
+                            alt={image.collection.name}
+                            className="max-h-[90vh] w-auto object-contain z-10"
                         />
                     </div>
-
-                    <div>
-                        <div className="photo-meta-background h-auto py-10 pl-5 pr-5 mt-2 rounded-xl overflow-auto photo-meta-modal flex flex-col gap-2">
+                    
+                    {/* Metadata Section */}
+                    <div className='h-full flex justify-end flex-col'>
+                        <div className="w-full sm:col-span-1 flex flex-col gap-2 bg-opacity-90 p-4 rounded-xl overflow-auto text-sm sm:text-base">
                             <p className="flex items-center gap-2">
-                                <span className="font-bold">Camera:</span> {image.camera?.name}
+                                <span className="font-bold">Camera:</span> {image.camera?.short}
                             </p>
-                            { image.lens ? <p className="flex items-center gap-2">
+                            {image.lens && <p className="flex items-center gap-2">
                                 <span className="font-bold">Lens:</span> {image.lens?.name}
-                            </p> : '' }
-                            { image.iso ? <p className="flex items-center gap-2">
-                                <span className="font-bold">Iso:</span> {image.iso?.name}
-                            </p> : '' }
-                            { image.aperture ? <p className="flex items-center gap-2">
+                            </p>}
+                            {image.iso && <p className="flex items-center gap-2">
+                                <span className="font-bold">ISO:</span> {image.iso?.name}
+                            </p>}
+                            {image.aperture && <p className="flex items-center gap-2">
                                 <span className="font-bold">Aperture:</span> {image.aperture}
-                            </p> : '' }
-                            { image.shutter_speed ? <p className="flex items-center gap-2">
+                            </p>}
+                            {image.shutter_speed && <p className="flex items-center gap-2">
                                 <span className="font-bold">Shutter Speed:</span> {image.shutter_speed}s
-                            </p> : '' }
-                        </div>
-                        <div className='quality-disclaimer'>
-                            <p>* Photos not displayed in their highest quality, for better website performance.</p>
+                            </p>}
+                            <div className="text-xs text-gray-500 mt-2">
+                                { language === "en" && <p>* Photos shown in reduced quality to improve website performance</p> }
+                                { language=== "pt-br" && <p>* Fotos em qualidade reduzida para priorizar o desempenho do site</p> }
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
     );
 }

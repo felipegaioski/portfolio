@@ -311,6 +311,9 @@ footer {
     padding: 1rem;
     background-color: var(--footer-color);
     color: var(--foreground-two);
+    left:0;
+    bottom:0;
+    right:0;
 }
 
 .photo-meta {
@@ -554,4 +557,12 @@ footer {
 
 .image-modal {
     background-color: var(--body-bg-color);
+}
+
+.image-modal-container {
+    z-index: 99;
+}
+
+.png-shadow {
+    filter: drop-shadow(2px 2px 2px rgba(0, 0, 0, 0.5));
 }
