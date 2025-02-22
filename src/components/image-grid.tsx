@@ -3,6 +3,7 @@ import { CSSProperties } from 'react';
 import { Photo } from '../types/types';
 import Image from 'next/image';
 import ImageModal from "./image-modal";
+import { useLanguage } from "../contexts/language-context";
 
 type ImageGridProps = 
   | { collectionId: number; recent?: false }
@@ -14,6 +15,7 @@ export default function ImageGrid({ collectionId, recent }: ImageGridProps) {
     const [selectedImage, setSelectedImage] = useState<Photo | null>(null);
     const [visibleImages, setVisibleImages] = useState(new Set<number>());
     const [isLoading, setIsLoading] = useState<boolean>(true);
+    const { language } = useLanguage();
 
     useEffect(() => {
         if (collectionId) {
@@ -116,6 +118,10 @@ export default function ImageGrid({ collectionId, recent }: ImageGridProps) {
                 </div> }
             </div>
             {selectedImage && <ImageModal image={selectedImage} onClose={closeModal} />}
+            <div className="text-sm flex justify-center items-center text-gray-500 mt-8">
+                { language === "en" && <p className='flex justify-center items-center'>* Photos shown in reduced quality to improve website performance</p> }
+                { language=== "pt-br" && <p className='flex justify-center items-center'>* Fotos em qualidade reduzida para priorizar o desempenho do site</p> }
+            </div>
         </section>
     );
 }

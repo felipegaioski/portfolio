@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Photo } from '../types/types';
 import Image from 'next/image';
-import { useLanguage } from "../contexts/language-context";
 import { useTheme } from "../contexts/theme-context";
 
 type PhotoModalProps = {
@@ -9,9 +8,7 @@ type PhotoModalProps = {
     onClose: () => void;
 };
 
-
 export default function ImageModal({ image, onClose }: PhotoModalProps) {
-    const { language } = useLanguage();
     const { theme } = useTheme();
     
     const [isClosing, setIsClosing] = useState(false);
@@ -50,12 +47,14 @@ export default function ImageModal({ image, onClose }: PhotoModalProps) {
                 style={{ maxHeight: '90vh' }}
             >
                 {/* Close Button */}
-                <button onClick={handleClose} className="absolute top-2 right-4 text-xl z-50">✖</button>
+                <div className='flex justify-end top-0'>
+                    <button onClick={handleClose} className="top-2 right-4 text-xl z-50">✖</button>
+                </div>
 
                 {/* Content Layout */}
                 <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 flex-1 overflow-hidden items-center">
                     {/* Image Container */}
-                    <div className="col-span-3 w-full flex justify-center items-center sm:pt-0 pt-4">
+                    <div className="col-span-3 w-full flex justify-center items-center">
                         { theme === "dark" && <div className="absolute w-[60%] h-[80%] bg-white opacity-20 rounded-full blur-3xl ml-[20%]"></div> }
                         { theme === "light" && <div className="absolute w-[60%] h-[80%] opacity-20 rounded-full blur-3xl ml-[20%]" style={{ backgroundColor: 'var(--primary)' }}> </div> }
                         <Image
@@ -69,7 +68,7 @@ export default function ImageModal({ image, onClose }: PhotoModalProps) {
                     
                     {/* Metadata Section */}
                     <div className='h-full flex justify-end flex-col'>
-                        <div className="w-full sm:col-span-1 flex flex-col gap-2 bg-opacity-90 p-4 rounded-xl overflow-auto text-sm sm:text-base">
+                        <div className="w-full sm:col-span-1 flex flex-col gap-1 bg-opacity-90 px-4 rounded-xl overflow-auto text-sm sm:text-base">
                             <p className="flex items-center gap-2">
                                 <span className="font-bold">Camera:</span> {image.camera?.short}
                             </p>
@@ -85,10 +84,6 @@ export default function ImageModal({ image, onClose }: PhotoModalProps) {
                             {image.shutter_speed && <p className="flex items-center gap-2">
                                 <span className="font-bold">Shutter Speed:</span> {image.shutter_speed}s
                             </p>}
-                            <div className="text-xs text-gray-500 mt-2">
-                                { language === "en" && <p>* Photos shown in reduced quality to improve website performance</p> }
-                                { language=== "pt-br" && <p>* Fotos em qualidade reduzida para priorizar o desempenho do site</p> }
-                            </div>
                         </div>
                     </div>
                 </div>
