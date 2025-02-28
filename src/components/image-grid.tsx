@@ -118,10 +118,14 @@ export default function ImageGrid({ collectionId, recent }: ImageGridProps) {
                 </div> }
             </div>
             {selectedImage && <ImageModal image={selectedImage} onClose={closeModal} />}
-            <div className="text-sm flex justify-center items-center text-gray-500 mt-8">
-                { language === "en" && <p className='flex justify-center items-center'>* Photos shown in reduced quality to improve website performance</p> }
-                { language=== "pt-br" && <p className='flex justify-center items-center'>* Fotos em qualidade reduzida para priorizar o desempenho do site</p> }
-            </div>
+            { !isLoading && 
+                <>
+                    <div className="text-sm flex justify-center items-center text-gray-500 mt-8">
+                        { language === "en" && <p className='flex justify-center items-center'>* Photos shown in reduced quality to improve website performance</p> }
+                        { language=== "pt-br" && <p className='flex justify-center items-center'>* Fotos em qualidade reduzida para priorizar o desempenho do site</p> }
+                    </div>
+                </> 
+            }
         </section>
     );
 }

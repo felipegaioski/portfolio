@@ -4,7 +4,7 @@ import SettingsModal from "./settings-modal";
 import Settings from "./settings";
 import { useLanguage } from "../contexts/language-context";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "motion/react";
 import { GiHamburgerMenu } from "react-icons/gi";
 
 export default function Header() {
@@ -27,7 +27,7 @@ export default function Header() {
                 <nav className="header-nav">
                     <Link href="/" className="text-center transition-all duration-300 hover:tracking-wider">{ home }</Link>
                     <Link href="/gallery" className="text-center transition-all duration-300 hover:tracking-wider">{ gallery }</Link>
-                    <Link href="#" className="text-center transition-all duration-300 hover:tracking-wider">{ about }</Link>
+                    <Link href="/about" className="text-center transition-all duration-300 hover:tracking-wider">{ about }</Link>
                     <Link href="/gear" className="text-center transition-all duration-300 hover:tracking-wider">{ gear }</Link>
                     <button className="pl-5 text-center transition-all duration-300 hover:scale-110" onClick={() => setShowSettings(!showSettings)}>
                         <FaGear />

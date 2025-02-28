@@ -27,11 +27,11 @@ export default function SettingsModal({ onClose }: { onClose: () => void }) {
                 <IoCloseSharp className='cursor-pointer text-2xl' onClick={onClose}/>
             </div>
             <hr className='pb-5'/>
-            <div>
+            <div className='pb-5'>
                 <LanguageSwitcher />
             </div>
-            <hr className='py-2'/>
-            <div>
+            <hr/>
+            <div className='pt-5'>
                 <ThemeSwitcher />
             </div>
         </div>

@@ -3,10 +3,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Alumni+Sans+Pinstripe:ital@0;1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Yuji+Syuku&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poiret+One&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.poiret-one-regular {
+    font-family: "Poiret One", serif;
+    font-weight: 400;
+    font-style: normal;
+  }
 
 @media (prefers-color-scheme: dark) {
   :root {
@@ -17,6 +24,7 @@
 
 html[data-theme="dark"] {
     --body-bg-color: #212325;
+    --body-bg-color-rgb: rgb(33, 35, 37, 0.5);
     --foreground: #ededed;
     --primary: #19417D;
     --secondary: #1C293D;
@@ -39,6 +47,7 @@ html[data-theme="dark"] {
     --fourth: #7D5C19;
     --fifth: #D1A854;
     --body-bg-color: #ededed;
+    --body-bg-color-rgb: rgb(237, 237, 237, 0.5);
     --foreground: #212325;
     --body-bg-secondary: #f3f3f3;
     --toggle-background: #3b3b3b;
@@ -69,7 +78,7 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("https://i.postimg.cc/xdsxwL40/clouds2.png");
+    /* background-image: url("https://i.postimg.cc/xdsxwL40/clouds2.png"); */
     background-repeat: no-repeat;
     background-size: cover;
     opacity: 1; /* Opacidade padrão */
@@ -87,9 +96,14 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 1rem 0rem;
-    background-color: var(--body-bg-color);
+    background-color: var(--body-bg-color-rgb);
+    /* background-color: transparent; */
     color: var(--foreground);
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    backdrop-filter: blur(10px);
+    z-index: 9999;
 }
 header h1 {
     font-weight: 700;
@@ -481,6 +495,7 @@ footer {
 .page-title h2 {
     border-bottom: 3px solid var(--primary);
     width: fit-content;
+    /* letter-spacing: -2px; */
 }
 
 .settings {
